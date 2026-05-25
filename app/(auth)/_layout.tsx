@@ -7,18 +7,7 @@ SplashScreen.preventAutoHideAsync();
 export default function AuthLayout() {
   return (
     <View style={styles.container}>
-      <Stack
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#FFF",
-          },
-          headerTitleStyle: {
-            fontFamily: "Inter-Bold",
-            fontSize: 14,
-          },
-          headerTintColor: "#000",
-        }}
-      >
+      <Stack>
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
       </Stack>
     </View>

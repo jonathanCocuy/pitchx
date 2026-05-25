@@ -1,3 +1,4 @@
+import { useColorScheme } from "@/components/useColorScheme";
 import {
     Inter_400Regular,
     Inter_700Bold,
@@ -8,15 +9,10 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/components/useColorScheme";
-
-export {
-    // Catch any errors thrown by the Layout component.
-    ErrorBoundary
-} from "expo-router";
+// Catch any errors thrown by the Layout component.
+export { ErrorBoundary } from "expo-router";
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
   initialRouteName: "(auth)",
 };
 
