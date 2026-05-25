@@ -3,7 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import Logo from "../../assets/images/main-logo.png";
 
-export default function onboarding() {
+export default function OnboardingScreen() {
   return (
     <View style={styles.mainContainer}>
       <LinearGradient
@@ -14,7 +14,7 @@ export default function onboarding() {
       />
       <View style={styles.sectionLogo}>
         <Image source={Logo} style={styles.logo} />
-        <Text style={styles.titleLogo}>PitchX</Text>
+        <Text style={styles.titleLogo}> PitchX </Text>
       </View>
       <Text style={styles.text}>
         Plan professional soccer sessions, manage categories, and unlock your
@@ -33,16 +33,16 @@ export default function onboarding() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
     width: "100%",
     backgroundColor: "#6c21dc",
-    gap: 10,
   },
 
   sectionLogo: {
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
     gap: 8,
   },
 
@@ -52,26 +52,26 @@ const styles = StyleSheet.create({
   },
 
   titleLogo: {
-    fontFamily: "Inter-Bold",
-    letterSpacing: -0.3,
-    color: "#fff",
     fontSize: 36,
+    color: "#fff",
+    letterSpacing: -0.3,
+    fontFamily: "Inter-Bold",
   },
 
   text: {
-    fontFamily: "Inter-Regular",
-    color: "#fff",
-    letterSpacing: -0.3,
     fontSize: 18,
-    textAlign: "center",
+    color: "#fff",
     paddingLeft: 16,
     paddingRight: 16,
+    textAlign: "center",
+    letterSpacing: -0.3,
+    fontFamily: "Inter-Regular",
   },
 
   buttonNext: {
     position: "absolute",
-    bottom: 20,
     right: 20,
+    bottom: 20,
     padding: 12,
     borderWidth: 2,
     borderRadius: 50,
