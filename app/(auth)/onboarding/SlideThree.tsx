@@ -1,9 +1,9 @@
-import { Ionicons } from "@expo/vector-icons";
+import { DoneType } from "@/types/onboarding.type";
 import { LinearGradient } from "expo-linear-gradient";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import Logo from "../../assets/images/main-logo.png";
+import { Image, StyleSheet, Text, View } from "react-native";
+import Logo from "../../../assets/images/main-logo.png";
 
-export default function OnboardingScreen() {
+export default function SlideThree( { onDone }: { onDone: DoneType }) {
   return (
     <View style={styles.mainContainer}>
       <LinearGradient
@@ -20,12 +20,6 @@ export default function OnboardingScreen() {
         Plan professional soccer sessions, manage categories, and unlock your
         team's maximum potential from one place.
       </Text>
-      <Pressable
-        onPress={() => console.log("Botón presionado")}
-        style={styles.buttonNext}
-      >
-        <Ionicons name="arrow-forward-outline" size={32} color="#a688fd" />
-      </Pressable>
     </View>
   );
 }
