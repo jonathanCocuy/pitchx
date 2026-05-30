@@ -1,8 +1,8 @@
 import { useColorScheme } from "@/components/useColorScheme";
 import {
-    Inter_400Regular,
-    Inter_700Bold,
-    useFonts,
+  Inter_400Regular,
+  Inter_700Bold,
+  useFonts,
 } from "@expo-google-fonts/inter";
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";

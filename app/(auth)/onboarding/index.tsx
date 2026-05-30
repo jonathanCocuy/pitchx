@@ -1,5 +1,6 @@
 import { DoneType } from "@/types/onboarding.type";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
 import { Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Dots from 'react-native-dots-pagination';
@@ -8,8 +9,9 @@ import SlideThree from "./SlideThree";
 import SlideTwo from "./SlideTwo";
 
 export default function Onboarding( { onDone }: { onDone: DoneType }) {
-  const [currentPage, setCurrentPage] = useState(0);
+  const router = useRouter()
   const flatListRef = useRef<FlatList>(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
   // Here, I can use height the same way
   const { width } = Dimensions.get('window')
@@ -29,6 +31,10 @@ export default function Onboarding( { onDone }: { onDone: DoneType }) {
     <SlideTwo />,
     <SlideThree onDone={onDone}/>
   ]
+
+  function redirectRegister(){
+    router.push("/(auth)/register")
+  }
 
   return (
     <View style={styles.slideContainer}>
@@ -51,7 +57,7 @@ export default function Onboarding( { onDone }: { onDone: DoneType }) {
       </View>
       <View>
         <TouchableOpacity
-          onPress={currentPage < 2 ? nextScreen : onDone}
+          onPress={currentPage < 2 ? nextScreen : redirectRegister}
           style={styles.nextButton}
         >
           {currentPage < 2 ? (
