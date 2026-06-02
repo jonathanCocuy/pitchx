@@ -1,4 +1,3 @@
-import Logo from "@assets/images/main-logo.png";
 import {
     Image,
     StyleSheet,
@@ -7,13 +6,14 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import Logo from "../../assets/images/main-logo.png";
 
 export default function Login() {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Image source={Logo} style={styles.logo} />
-        <Text style={styles.title}></Text>
+        <Text style={styles.title}>PitchX</Text>
       </View>
 
       <View style={styles.inputContainer}>
@@ -39,12 +39,37 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 50,
   },
-  titleContainer: {},
-  logo: {},
-  title: {},
+
+  titleContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 12,
+  },
+
+  logo: {
+    width: 50,
+    height: 50,
+  },
+
+  title: {
+    fontFamily: "Inter-Bold",
+    letterSpacing: -0.3,
+    fontSize: 32,
+    color: "#fff",
+  },
+
   inputContainer: {},
-  input: {},
+
+  input: {
+    fontFamily: "Inter-Regular",
+    fontSize: 20,
+    color: "#fff",
+  },
+
   inputEmail: {},
+
   inputPassword: {},
+
   button: {},
 });
