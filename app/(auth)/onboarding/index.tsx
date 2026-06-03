@@ -2,23 +2,30 @@ import { DoneType } from "@/types/onboarding.type";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
-import { Dimensions, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Dots from 'react-native-dots-pagination';
+import {
+    Dimensions,
+    FlatList,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
+import Dots from "react-native-dots-pagination";
 import SlideOne from "./SlideOne";
 import SlideThree from "./SlideThree";
 import SlideTwo from "./SlideTwo";
 
-export default function Onboarding( { onDone }: { onDone: DoneType }) {
-  const router = useRouter()
+export default function Onboarding({ onDone }: { onDone: DoneType }) {
+  const router = useRouter();
   const flatListRef = useRef<FlatList>(null);
   const [currentPage, setCurrentPage] = useState(0);
 
   // Here, I can use height the same way
-  const { width } = Dimensions.get('window')
+  const { width } = Dimensions.get("window");
   const nextScreen = () => {
     if (currentPage === slideScreens.length - 1) return onDone();
-    flatListRef.current?.scrollToIndex({ index: currentPage + 1 })
-  }
+    flatListRef.current?.scrollToIndex({ index: currentPage + 1 });
+  };
 
   // Missing explanation...
   const handleScroll = (e: any) => {
@@ -29,11 +36,11 @@ export default function Onboarding( { onDone }: { onDone: DoneType }) {
   const slideScreens = [
     <SlideOne />,
     <SlideTwo />,
-    <SlideThree onDone={onDone}/>
-  ]
+    <SlideThree onDone={onDone} />,
+  ];
 
-  function redirectRegister(){
-    router.push("/(auth)/register")
+  function redirectRegister() {
+    router.push("/(auth)/login");
   }
 
   return (
@@ -43,9 +50,7 @@ export default function Onboarding( { onDone }: { onDone: DoneType }) {
         ref={flatListRef}
         data={slideScreens}
         // This renderItem is used like a .map()
-        renderItem={({ item }) => (
-          <View style={{ width }}>{item}</View>
-        )}
+        renderItem={({ item }) => <View style={{ width }}>{item}</View>}
         horizontal
         // This is a complete animation to scroll, when I scroll horizontal, stop in the next screen
         pagingEnabled
@@ -68,7 +73,7 @@ export default function Onboarding( { onDone }: { onDone: DoneType }) {
         </TouchableOpacity>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -77,7 +82,7 @@ const styles = StyleSheet.create({
   dotsContainer: {
     position: "absolute",
     left: 20,
-    bottom: 60
+    bottom: 60,
   },
 
   nextButton: {
@@ -93,9 +98,9 @@ const styles = StyleSheet.create({
   },
 
   createAccount: {
-    fontFamily: 'Inter-Bold',
+    fontFamily: "Inter-Bold",
     letterSpacing: -0.3,
     fontSize: 16,
-    color: '#FFF'
-  }
-})
+    color: "#FFF",
+  },
+});
