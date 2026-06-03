@@ -5,8 +5,8 @@ import Logo from "../../assets/images/main-logo.png";
 export default function Register() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [isFocused, setIsFocused] = useState(false);
-
+  const [isFocused, setIsFocused] = useState<string | null>(null);
+  
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -16,18 +16,22 @@ export default function Register() {
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Nombre de usuario</Text>
         <TextInput
-          style={[styles.input, isFocused && styles.inputFocused]}
+          value={email}
+          onChangeText={setEmail}
+          style={[styles.input, isFocused === "email" && styles.inputFocused]}
           placeholder="Email Address"
           placeholderTextColor="#86868b"
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={() => setIsFocused("email")}
+          onBlur={() => setIsFocused(null)}
         />
         <TextInput
-          style={[styles.input, isFocused && styles.inputFocused]}
+          style={[styles.input, isFocused === "password" && styles.inputFocused]}
+          value={password}
           placeholder="Password"
+          onChangeText={setPassword}
           placeholderTextColor="#86868b"
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={() => setIsFocused("password")}
+          onBlur={() => setIsFocused(null)}
         />
       </View>
     </View>
@@ -85,6 +89,20 @@ const styles = StyleSheet.create({
     width: "90%",
     fontFamily: "Inter-Regular",
   },
+  password: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#d2d2d7",
+    backgroundColor: "#ffffff",
+    color: "#1d1d1f",
+    width: "90%",
+    fontFamily: "Inter-Regular",
+  },
+
+
   inputFocused: {
     borderColor: "#0071e3",
     // Replicamos el "glow" en iOS con shadow y en Android con elevación sutil
