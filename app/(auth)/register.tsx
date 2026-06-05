@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
-    backgroundColor: "#FFF"
+    backgroundColor: "#F9F9F9"
   },
 
   titleContainer: {
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "Inter-Bold",
-    fontSize: 25,
+    fontSize: 20,
     letterSpacing: -0.3
   },
 
