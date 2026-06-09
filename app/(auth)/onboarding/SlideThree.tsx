@@ -1,25 +1,57 @@
 import { DoneType } from "@/types/onboarding.type";
 import { LinearGradient } from "expo-linear-gradient";
-import { Image, StyleSheet, Text, View } from "react-native";
-import Logo from "../../../assets/images/main-logo.png";
+import { useEffect, useRef } from 'react';
+import { Animated, ImageBackground, StyleSheet, Text, View } from "react-native";
+import ImageBG from "../../../assets/images/bg-two.png";
+import PlanningSession from "../../../assets/images/planning-session.png";
 
-export default function SlideThree( { onDone }: { onDone: DoneType }) {
+export default function SlideThree( {onDone}: {onDone: DoneType}) {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(20)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 2000,
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 2000,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
+
   return (
     <View style={styles.mainContainer}>
-      <LinearGradient
-        colors={["#2e0e67", "#5c1dba", "#000000"]}
+      <ImageBackground 
+        source={ImageBG} 
+        resizeMode="cover" 
         style={StyleSheet.absoluteFill}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      />
-      <View style={styles.sectionLogo}>
-        <Image source={Logo} style={styles.logo} />
-        <Text style={styles.titleLogo}> PitchX </Text>
-      </View>
-      <Text style={styles.text}>
-        Plan professional soccer sessions, manage categories, and unlock your
-        team's maximum potential from one place.
-      </Text>
+      >
+        <LinearGradient
+          colors={["rgba(22, 0, 59, 0.85)", "rgba(92, 29, 186, 0.9)", "#000000"]}
+          style={StyleSheet.absoluteFill}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+        />
+
+        <View style={styles.contentContainer}>
+          <Text style={styles.logoTitle}>Your session, fully structured</Text>
+          <View style={styles.logoSection}>
+            <Animated.Image 
+              source={PlanningSession} 
+              style={[styles.logo, { opacity: fadeAnim, transform: [{ translateY: slideAnim }] }]}
+            />
+          </View>
+          
+          <Text style={styles.text}>
+            Plan every minute of your drills and have your entire technical routine ready before stepping onto the pitch. Tap below to start creating!
+          </Text>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -27,50 +59,39 @@ export default function SlideThree( { onDone }: { onDone: DoneType }) {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    backgroundColor: "#2e0e67",
+  },
+  contentContainer: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: 10,
-    width: "100%",
-    backgroundColor: "#6c21dc",
+    gap: 15,
+    paddingHorizontal: 20,
   },
-
-  sectionLogo: {
+  logoSection: {
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
   },
-
   logo: {
-    width: 120,
-    height: 120,
+    width: 350,
+    height: 350,
   },
-
-  titleLogo: {
+  logoTitle: {
     fontSize: 36,
     color: "#fff",
     letterSpacing: -0.3,
     fontFamily: "Inter-Bold",
+    textAlign: "left",
+    width: "100%"
   },
-
   text: {
-    fontSize: 18,
+    fontSize: 20,
     color: "#fff",
-    paddingLeft: 16,
-    paddingRight: 16,
+    paddingHorizontal: 16,
     textAlign: "center",
     letterSpacing: -0.3,
-    fontFamily: "Inter-Regular",
-  },
-
-  buttonNext: {
-    position: "absolute",
-    right: 20,
-    bottom: 20,
-    padding: 12,
-    borderWidth: 2,
-    borderRadius: 50,
-    borderStyle: "solid",
-    borderColor: "#a688fd",
-    backgroundColor: "#fff",
+    fontFamily: "Inter-Medium",
+    lineHeight: 24,
   },
 });

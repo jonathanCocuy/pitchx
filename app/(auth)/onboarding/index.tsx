@@ -58,7 +58,7 @@ export default function Onboarding({ onDone }: { onDone: DoneType }) {
         onScroll={handleScroll}
       />
       <View style={styles.dotsContainer}>
-        <Dots length={3} active={currentPage} activeColor="purple" />
+        <Dots length={3} active={currentPage} activeColor="#a688fd" />
       </View>
       <View>
         <TouchableOpacity
